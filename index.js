@@ -32,14 +32,14 @@ const client = new MongoClient(uri, {
     }
 });
 
-// async function run() {
-//     try {
-//         // Connect the client to the server	(optional starting in v4.7)
-//         await client.connect();
+async function run() {
+    try {
+        // Connect the client to the server	(optional starting in v4.7)
+        await client.connect();
 
-client.connect(() => {
-    console.log('connecting to MOngo db');
-}).catch(console.dir)
+// client.connect(() => {
+//     console.log('connecting to MOngo db');
+// }).catch(console.dir)
 
 const database = client.db("hireloop_db");
 const jobCollection = database.collection("jobs");
@@ -346,15 +346,15 @@ app.post('/api/subscriptions', async (req, res) => {
 // Send a ping to confirm a successful connection
 // await client.db("admin").command({ ping: 1 });
 //         console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//     } finally {
-//         // Ensures that the client will close when you finish/error
-//         // await client.close();
-//     }
-// }
-// run().catch(console.dir);
+    } finally {
+        // Ensures that the client will close when you finish/error
+        // await client.close();
+    }
+}
+run().catch(console.dir);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
 
-module.exports = app;
+// module.exports = app;
